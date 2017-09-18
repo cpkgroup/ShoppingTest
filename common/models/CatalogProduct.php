@@ -60,7 +60,7 @@ class CatalogProduct extends \spinitron\dynamicAr\DynamicActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'model' => 'Model',
-            'catalog_category_id' => 'Catalog Category ID',
+            'catalog_category_id' => 'Category ID',
             'imgUrl' => 'Img Url',
             'desc' => 'Desc',
             'price' => 'Price',

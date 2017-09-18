@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\CatalogAttributeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Catalog Attributes';
+$this->title = 'Attributes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="catalog-attribute-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Catalog Attribute', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Attribute', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,

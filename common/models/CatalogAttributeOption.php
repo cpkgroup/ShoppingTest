@@ -42,7 +42,7 @@ class CatalogAttributeOption extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'catalog_attribute_id' => 'Catalog Attribute ID',
+            'catalog_attribute_id' => 'Attribute ID',
             'title' => 'Title',
         ];
     }

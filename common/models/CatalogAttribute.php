@@ -44,7 +44,7 @@ class CatalogAttribute extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'catalog_category_id' => 'Catalog Category ID',
+            'catalog_category_id' => 'Category ID',
             'title' => 'Title',
             'desc' => 'Desc',
         ];

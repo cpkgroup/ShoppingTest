@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\CatalogAttribute */
 
-$this->title = 'Create Catalog Attribute';
-$this->params['breadcrumbs'][] = ['label' => 'Catalog Attributes', 'url' => ['index']];
+$this->title = 'Create Attribute';
+$this->params['breadcrumbs'][] = ['label' => 'Attributes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="catalog-attribute-create">

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\CatalogCategory */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Catalog Categories', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="catalog-category-view">

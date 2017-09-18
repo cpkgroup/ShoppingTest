@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\CatalogAttribute */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Catalog Attributes', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Attributes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="catalog-attribute-view">

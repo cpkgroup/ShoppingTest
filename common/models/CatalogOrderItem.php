@@ -48,10 +48,10 @@ class CatalogOrderItem extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'catalog_order_id' => 'Catalog Order ID',
+            'catalog_order_id' => 'Order ID',
             'title' => 'Title',
             'price' => 'Price',
-            'catalog_product_id' => 'Catalog Product ID',
+            'catalog_product_id' => 'Product ID',
             'quantity' => 'Quantity',
         ];
     }

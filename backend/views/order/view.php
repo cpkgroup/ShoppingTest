@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\CatalogOrder */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Catalog Orders', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="catalog-order-view">

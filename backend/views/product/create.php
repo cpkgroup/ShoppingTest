@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\CatalogProduct */
 
-$this->title = 'Create Catalog Product';
-$this->params['breadcrumbs'][] = ['label' => 'Catalog Products', 'url' => ['index']];
+$this->title = 'Create Product';
+$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="catalog-product-create">
