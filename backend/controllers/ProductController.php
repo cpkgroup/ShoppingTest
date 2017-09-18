@@ -66,6 +66,7 @@ class ProductController extends Controller
         $model = new CatalogProduct();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $this->clearCache();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -100,6 +101,7 @@ class ProductController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $this->clearCache();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -116,6 +118,7 @@ class ProductController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->clearCache();
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -135,5 +138,14 @@ class ProductController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    /**
+     * clear memory cache
+     */
+    private function clearCache() {
+        // flush memory cache
+        $cache = Yii::$app->cache;
+        $cache->flush();
     }
 }

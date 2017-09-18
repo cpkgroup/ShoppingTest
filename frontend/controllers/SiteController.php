@@ -74,11 +74,26 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CatalogProductSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->get('filter'));
+        $params = Yii::$app->request->get('filter');
+        $cacheKey = sha1(json_encode($params));
+        $cache = Yii::$app->cache;
+        $data = $cache->get($cacheKey);
+        if ($data !== false) {
+            $products = $data['products'];
+            $pagination = $data['pagination'];
+        } else {
+            $searchModel = new CatalogProductSearch();
+            $dataProvider = $searchModel->search($params);
+            $products = $dataProvider->getModels();
+            $pagination = $dataProvider->getPagination();
+            $cache->set($cacheKey, [
+                'products' => $products,
+                'pagination' => $pagination
+            ]);
+        }
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'products' => $products,
+            'pagination' => $pagination,
         ]);
     }
 

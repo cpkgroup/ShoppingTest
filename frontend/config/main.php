@@ -36,6 +36,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'cache' => [
+            'class' => 'yii\caching\MemCache',
+            'useMemcached' => true,
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

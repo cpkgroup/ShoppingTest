@@ -7,20 +7,20 @@ use yii\helpers\BaseHtml;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\CatalogCategory */
+/* @var $product common\models\CatalogProduct */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <div class="col-lg-6" style="padding: 5px;">
     <div style="padding: 5px; height: 250px; border: 1px solid #000">
-        <h4><?= $model->title ?></h4>
-        Model: <b><?= $model->model ?></b>
+        <h4><?= $product->title ?></h4>
+        Model: <b><?= $product->model ?></b>
         <br>
-        Price: <b><?= $model->price ?></b>
+        Price: <b><?= $product->price ?></b>
         <br>
-        Category: <b><?= $model->getCatalogCategory()->one()->getAttribute('title') ?></b>
+        Category: <b><?= $product->getCatalogCategory()->one()->getAttribute('title') ?></b>
         <br>
         <?php
-        $attributes = $model->getAttributeValues();
+        $attributes = $product->getAttributeValues();
         foreach ($attributes as $attribute) {
             ?>
             <?= $attribute['attribute_value'] ?>: <b><?= $attribute['option_value'] ?></b>
@@ -28,7 +28,7 @@ use yii\helpers\ArrayHelper;
             <?php
         }
         ?>
-        <?= $model->desc ?>
+        <?= $product->desc ?>
         <br>
         <?= Html::submitButton('Buy', ['class' => 'btn btn-success']) ?>
     </div>

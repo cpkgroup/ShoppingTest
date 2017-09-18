@@ -20,9 +20,9 @@ Pjax::begin([
 
                 <div class="row">
                     <?php
-                    foreach ($dataProvider->getModels() as $model) {
+                    foreach ($products as $product) {
                         echo $this->render('_product', [
-                            'model' => $model
+                            'product' => $product
                         ]);
                     }
                     ?>
@@ -31,7 +31,7 @@ Pjax::begin([
                 <div class="row">
                     <?php
                     echo LinkPager::widget([
-                        'pagination' => $dataProvider->getPagination(),
+                        'pagination' => $pagination,
                     ]);
                     ?>
                 </div>
