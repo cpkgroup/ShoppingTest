@@ -22,6 +22,11 @@ use Yii;
  */
 class CatalogProduct extends \spinitron\dynamicAr\DynamicActiveRecord
 {
+    // Product status here
+    const STATUS_NOT_AVAILABLE = 0;
+    const STATUS_AVAILABLE = 1;
+    const STATUS_COMING_SOON = 2;
+
     /**
      * @inheritdoc
      */
@@ -84,5 +89,21 @@ class CatalogProduct extends \spinitron\dynamicAr\DynamicActiveRecord
     public function getCatalogCategory()
     {
         return $this->hasOne(CatalogCategory::className(), ['id' => 'catalog_category_id']);
+    }
+
+    public function getAttributeValues()
+    {
+        $result = [];
+        $attributes = json_decode($this->getAttribute('attribute_values'), true);
+        foreach ($attributes as $attribute => $optionId) {
+            $attributeId = (int)str_replace('attr_', '', $attribute);
+            $result[$attributeId] = [
+                'attribute_id' => $attributeId,
+                'attribute_value' => CatalogAttribute::findOne($attributeId)->getAttribute('title'),
+                'option_id' => $optionId,
+                'option_value' => CatalogAttributeOption::findOne($optionId)->getAttribute('title'),
+            ];
+        }
+        return $result;
     }
 }

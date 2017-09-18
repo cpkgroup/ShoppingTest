@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\CatalogProduct;
-use common\models\CatalogProductSearch;
+use common\models\CatalogAttributeOption;
+use common\models\CatalogAttributeOptionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ProductController implements the CRUD actions for CatalogProduct model.
+ * AttributeOptionController implements the CRUD actions for CatalogAttributeOption model.
  */
-class ProductController extends Controller
+class AttributeOptionController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ProductController extends Controller
     }
 
     /**
-     * Lists all CatalogProduct models.
+     * Lists all CatalogAttributeOption models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CatalogProductSearch();
+        $searchModel = new CatalogAttributeOptionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Displays a single CatalogProduct model.
+     * Displays a single CatalogAttributeOption model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class ProductController extends Controller
     }
 
     /**
-     * Creates a new CatalogProduct model.
+     * Creates a new CatalogAttributeOption model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CatalogProduct();
+        $model = new CatalogAttributeOption();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Updates an existing CatalogProduct model.
+     * Updates an existing CatalogAttributeOption model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -83,21 +83,6 @@ class ProductController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        // set dynamic attributes here
-        if (Yii::$app->request->post('CatalogProduct')) {
-            $oldAttributes = json_decode($model->getAttribute(CatalogProduct::dynamicColumn()));
-            if ($oldAttributes) {
-                foreach ($oldAttributes as $key => $value) {
-                    $model->setAttribute($key, null);
-                }
-            }
-            foreach (Yii::$app->request->post('CatalogProduct') as $attr => $value) {
-                if (strstr($attr, 'attr_')) {
-                    $model->setAttribute($attr, $value);
-                }
-            }
-        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -109,7 +94,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Deletes an existing CatalogProduct model.
+     * Deletes an existing CatalogAttributeOption model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -122,15 +107,15 @@ class ProductController extends Controller
     }
 
     /**
-     * Finds the CatalogProduct model based on its primary key value.
+     * Finds the CatalogAttributeOption model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CatalogProduct the loaded model
+     * @return CatalogAttributeOption the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CatalogProduct::findOne($id)) !== null) {
+        if (($model = CatalogAttributeOption::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

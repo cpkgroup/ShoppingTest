@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\CatalogProduct;
+use frontend\models\CatalogProductSearch;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -72,7 +74,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $searchModel = new CatalogProductSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->get('filter'));
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
